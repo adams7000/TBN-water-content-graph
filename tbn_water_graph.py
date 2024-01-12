@@ -1,22 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime as datetime
-
-
-# In[ ]:
-
-
-
-
-
-# In[2]:
 
 
 def wrangle(filepath):
@@ -40,17 +25,8 @@ def wrangle(filepath):
 
    return df  
 
-
-# In[3]:
-
-
 df = wrangle(r"C:\Users\HP\Desktop\Engine Lube Oil Analysis Report - 2023.xlsx")
 df.head()
-# df["Unnamed: 0"]
-
-
-# In[4]:
-
 
 # selecct only gas engines from aksa1 and aksa2
 ph1_gas_dgs = df[7:14]
@@ -66,15 +42,7 @@ b["gas_new_oil_tbn"] = (b.iloc[:, -1]/b.iloc[:, -1]) * 12
 b = b.reset_index()
 b.head()
 
-
-# In[5]:
-
-
 gas_date = b.columns[-2].strftime("%d-%b-%y")
-
-
-# In[6]:
-
 
 # code out hfo engines
 ph1_hfo_dgs = df[:7]
@@ -90,15 +58,7 @@ a = pd.DataFrame(hfo_nonna_values)
 a["hfo_new_oil_tbn"] = (a.iloc[:, -1]/a.iloc[:, -1]) * 30
 a = a.reset_index()
 
-
-# In[7]:
-
-
 hfo_date = a.columns[-2].strftime("%d-%b-%y")
-
-
-# In[8]:
-
 
 # GRAPH FOR GAS ENGINES
 fig, ax = plt.subplots(figsize=(10, 4.5))
@@ -135,10 +95,6 @@ plt.ylabel('TBN Value [mgKOH/g]')
 plt.title("Distribution of Lube Oil TBN For Online Gas Powered Engines", weight = "bold")
 plt.legend(loc = "lower left", fontsize = 8);
 
-
-# In[9]:
-
-
 # GRAPH FOR HFO ENGINES
 fig, ax = plt.subplots(figsize=(10.5, 4.5))
 
@@ -174,10 +130,6 @@ plt.ylabel('TBN Value [mgKOH/g]')
 plt.title("Distribution of Lube Oil TBN For Online HFO Powered Engines", weight = "bold")
 plt.legend(loc = "lower left", fontsize = 8);
 
-
-# In[10]:
-
-
 def wrangle(filepath):
     # read csv file into dataframe
     df1 = pd.read_excel(filepath)
@@ -206,28 +158,16 @@ def wrangle(filepath):
     return df1
 
 
-# In[11]:
-
-
 df1 = wrangle(r"C:\Users\HP\Desktop\Engine Lube Oil Analysis Report - 2023.xlsx")
 df1.head()
-
-
-# In[12]:
 
 
 water_date = df1.columns[-1].strftime("%d-%b-%y")
 
 
-# In[13]:
-
-
 # Extract last column of df1 above
 last_water_results = df1.iloc[:, -1]
 last_water_results.head()
-
-
-# In[14]:
 
 
 def wrangle(filepath):
@@ -260,28 +200,16 @@ def wrangle(filepath):
     return df  
 
 
-# In[15]:
-
-
 df = wrangle(r"C:\Users\HP\Desktop\Engine Lube Oil Analysis Report - 2023.xlsx")
 df.tail()
-
-
-# In[16]:
 
 
 hfo_date = df.columns[-1].strftime("%d-%b-%y")
 
 
-# In[17]:
-
-
 # Extract last column of df above
 last_vis_results = df.iloc[:, -1]
 last_vis_results.head()
-
-
-# In[18]:
 
 
 # Create subplots ax and ax2
@@ -349,16 +277,3 @@ fig.suptitle(
 ax.set_ylabel("")
 
 plt.show()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
